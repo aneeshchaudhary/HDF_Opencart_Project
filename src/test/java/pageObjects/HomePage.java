@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +12,9 @@ public class HomePage extends BasePage{
 		super(driver);
 	}
 	
+	JavascriptExecutor js = (JavascriptExecutor) driver;  
+	
+	
 	//Elements
 	@FindBy(xpath = "//span[text()='My Account']")
 	WebElement lnkMyaccount;
@@ -21,6 +25,11 @@ public class HomePage extends BasePage{
 	@FindBy(linkText = "Login")
 	WebElement lnkLogin;
 	
+	@FindBy(name = "search")
+	WebElement searchBox;
+	
+	@FindBy(xpath = "//div[@id='search']//button[@type='button']")
+	WebElement btnSearch;
 	
 	
 	
@@ -36,5 +45,15 @@ public class HomePage extends BasePage{
 	public void clickLogin()
 	{
 		lnkLogin.click();
+	}
+	
+	public void writeInSearchBox()
+	{
+		searchBox.sendKeys("mac");
+	}
+	
+	public void clickSearchBtn()
+	{
+		btnSearch.click();
 	}
 }

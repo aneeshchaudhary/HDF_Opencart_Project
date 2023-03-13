@@ -4,13 +4,13 @@
   <test thread-count="5" name="Test_Chrome(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="testCases.TC_001_AccountRegistrationTest">
+      <class name="testCases.TC_007_CheckoutTest">
         <methods>
-          <include name="test_account_Registration"/>
           <include name="tearDown"/>
+          <include name="testCheckout"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- testCases.TC_001_AccountRegistrationTest -->
+      </class> <!-- testCases.TC_007_CheckoutTest -->
     </classes>
   </test> <!-- Test_Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->
