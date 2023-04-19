@@ -15,6 +15,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -39,11 +40,14 @@ public class BaseClass {
 		
 		logger = LogManager.getLogger(this.getClass());//logging
 		
-		//ChromeOptions options=new ChromeOptions();
-		//options.setExperimentalOption("excludeSwitches",new String[] {"enable-automation"});
+		
+		ChromeOptions options=new ChromeOptions();
+		options.setExperimentalOption("excludeSwitches",new String[] {"enable-automation"});
+		options.addArguments("--remote-allow-origins=*");
+		
 		if(br.equals("chrome"))
 		{
-			driver=new ChromeDriver();
+			driver=new ChromeDriver(options);
 		}else if (br.equals("edge")) {
 			driver=new EdgeDriver();
 		}
@@ -61,7 +65,7 @@ public class BaseClass {
 		
 		//driver.get(rb.getString("appURL"));// get url from config.properties file
 		//driver.get("https://demo.opencart.com/index.php");//Permanent
-		driver.get("http://localhost/opencart/upload/index.php?route=product/search&search=mac");// Temprery job fot test only
+		driver.get("http://localhost/opencart/upload/index.php");// Temprery job fot test only
 		
 		driver.manage().window().maximize();
 	}
